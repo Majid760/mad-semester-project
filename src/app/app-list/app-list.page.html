@@ -1,0 +1,124 @@
+<ion-header>
+    <ion-toolbar color="danger">
+      <ion-title style="text-align: center;">
+          Best Books
+         
+      </ion-title>
+       
+      </ion-toolbar>
+      
+  </ion-header>
+
+  <!--slider-->
+
+  <ion-searchbar></ion-searchbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="page" color="danger">
+      <ion-segment-button (click)="selectedTab(0)" value="Home">
+        <ion-label> <ion-icon name="home"style="font-size:25px; margin-top:12px;"></ion-icon></ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="selectedTab(1)" value="New">
+        <ion-label>New</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="selectedTab(2)" value="Top">
+        <ion-label>Top</ion-label>
+      </ion-segment-button>
+     
+    </ion-segment>
+  </ion-toolbar>
+  
+  <ion-content>
+    <ion-slides #slider>
+      <ion-slide color="danger">
+        
+            <ul style="list-style-type: none; padding:0px;">
+              <li *ngFor="let book of bookss; let i = index">
+                  <ion-card color="primary" (click)="gotoDetail(i)">
+                      <ion-card-header>
+                        
+                        <ion-card-title><h2 style="text-align: center;">{{book.name}}</h2></ion-card-title>
+                        <h3>Author:</h3>
+                        <ion-card-subtitle>{{book.author}}</ion-card-subtitle>
+                    </ion-card-header>
+                      <ion-card-content>{{book.description}}</ion-card-content>
+                  </ion-card>
+
+              </li>
+
+            </ul>
+             
+       
+          
+
+      </ion-slide>
+      <ion-slide>
+       
+        <ul style="list-style-type: none; padding:0px;">
+            <li *ngFor="let book of bookss; let i = index">
+              <ion-card color="success" (click)="gotoDetail(i)">
+                  <ion-card-header>
+                        
+                      <ion-card-title><h2 style="text-align: center;">{{book.name}}</h2></ion-card-title>
+                      <h3>Author:</h3>
+                      <ion-card-subtitle>{{book.author}}</ion-card-subtitle>
+                  </ion-card-header>
+                    <ion-card-content>{{book.description}}</ion-card-content>
+              </ion-card>
+
+            </li>
+
+          </ul>
+        
+      </ion-slide>
+      <ion-slide>
+        <ul style="list-style-type: none; padding:0px;">
+            <li *ngFor="let book of bookss; let i = index">
+              
+                <ion-card color="warning" (click)="gotoDetail(i)">
+                    <ion-card-header>
+                        
+                        <ion-card-title><h2 style="text-align: center;">{{book.name}}</h2></ion-card-title>
+                        <h3>Author:</h3>
+                        <ion-card-subtitle>{{book.author}}</ion-card-subtitle>
+                    </ion-card-header>
+                      <ion-card-content>{{book.description}}</ion-card-content>
+                </ion-card>
+            
+            <!-- <ion-button expand="block" color="success">Success</ion-button> -->
+            </li>
+
+          </ul>
+      </ion-slide>
+      
+    </ion-slides>
+
+
+    <!--adding new item-->
+
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button color="danger" (click)="gotoAdd()">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+     
+      </ion-fab>
+
+  </ion-content>
+
+ 
+
+ 
+
+
+
+
+  
+  
+  <!--footer-->
+  <ion-footer style="height: 40px;">
+      <ion-toolbar color="danger">
+        <ion-title style="text-align: center; font-size:12px">
+          compyright&copy; 2019.
+        </ion-title>
+      </ion-toolbar>
+    </ion-footer>
+  

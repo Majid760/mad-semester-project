@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Book detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card *ngIf="book" color="danger">
+   
+        <ion-card-header>
+          
+          <ion-card-title><h1 style="text-align: center;">{{book.name}}</h1></ion-card-title>
+          
+          <ion-card-subtitle style="text-align: center; padding:0px">
+              <h4>Author:</h4><span>{{book.author}}</span>
+              
+              <h4>IBN:</h4><span>{{book.ibn}}</span>
+              <h4>Edition:</h4><span>{{book.version}}</span>
+              <h4>Data:</h4><span>{{book.date}}</span>
+          </ion-card-subtitle>
+      </ion-card-header>
+        <ion-card-content>
+          <h3>Description:</h3>
+          <p>{{book.description}}</p>
+
+        </ion-card-content>
+    
+</ion-card>
+

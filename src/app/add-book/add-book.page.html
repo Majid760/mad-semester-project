@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="danger">
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+    <ion-title style="text-align: center;">Add Your Book</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding >
+  <ion-list class="vertical-space">
+    <ion-item>
+      <ion-label position="stacked">Book Title:</ion-label>
+      <ion-input type="text"  name ="bookTitle" [(ngModel)]="bookTitle"  required></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="stacked">Author:</ion-label>
+        <ion-input type="text" name="bookAuthor" [(ngModel)]="bookAuthor" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label position="stacked">IBN:</ion-label>
+          <ion-input type="text" name="bookIN" [(ngModel)]="bookIbn" required></ion-input>
+        </ion-item>
+
+    
+    <ion-item>
+        <ion-label position="stacked">Description:</ion-label>
+        <ion-input type="text" name="bookDescription" [(ngModel)]="bookDescription" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label position="stacked">Edition:</ion-label>
+          <ion-input type="text" name="bookEdition" [(ngModel)]="bookEdition" required></ion-input>
+        </ion-item>
+     
+      <ion-item>
+          <ion-label position="stacked">Date:</ion-label>
+          <ion-datetime min="1900" display-format="MM/DD/YYYY" name="bookDate" [(ngModel)]="bookDate" required></ion-datetime>
+        </ion-item>
+        
+  </ion-list>
+
+  <ion-button expand="block" shape="round" color="danger" (click)="addbook()">Add Book</ion-button>
+
+</ion-content>
+
+
+ <!--footer-->
+ <ion-footer style="height: 40px;">
+    <ion-toolbar color="danger">
+      <ion-title style="text-align: center; font-size:12px">
+        compyright&copy; 2019.
+      </ion-title>
+    </ion-toolbar>
+  </ion-footer>

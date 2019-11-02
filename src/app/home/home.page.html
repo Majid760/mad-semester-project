@@ -1,20 +1,77 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Majid Ali Khan
+<ion-header >
+  <ion-toolbar color="danger">
+    <ion-title style="text-align: center;">
+      Find Fine
+     
     </ion-title>
   </ion-toolbar>
+  <ion-searchbar></ion-searchbar>
 </ion-header>
 <ion-content>
-  <div class="ion-padding">
-    <h3>
-      Name: {{ user?.name}}
-    </h3>
-    <h3>
-      City: {{ user?.city}}
-    </h3>
-    <h3>
-      Interests: {{ user?.interests.toString()}}
-    </h3>
-  </div>
+  <ion-input type="text" placeholder="enter name here"></ion-input>
+  <ion-button  expand="block" color="danger" (click)="loading()">
+    Click me
+     <ion-icon name="home" slot="end"></ion-icon>
+  </ion-button>
+  <ion-button expand="block" color="primary" (click)="toast()">
+    Toast me
+
+  </ion-button>
+
+  <ion-button expand="block" color="warning" (click)="showalert()">Show alert</ion-button>
+  <ion-button expand="block" color="success" href="/books/12345">Go to e-library</ion-button>
+  <ion-button expand="block" color="dark" (click)="navigateBooks()">Go to e-library</ion-button>
+  <ion-button expand="block" color="tertiary" href="/signup">SignUp</ion-button>
+  <ion-button expand="block" color="primary" (click)="signing()">SignIn</ion-button>
+
+  <!-- ion-list -->
+  <ion-list>
+    <ion-item-sliding>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="https://api.adorable.io/avatars/500"/>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>Books list</h2>
+        <p>Lorem ipsum dolor sit amet consectet.Lorem ipsum dolor sit amet consectetLorem ipsum dolor sit amet consectet</p>
+      </ion-label>
+    </ion-item>
+    <ion-item-options side="start">
+        
+      <ion-item-option color="success"><ion-icon name="add" slot="start"></ion-icon>Archive</ion-item-option>
+    </ion-item-options>
+    <ion-item-options>
+      <ion-item-option side="end" color="danger"><ion-icon name="trash"></ion-icon>Delete</ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+    <ion-item>
+      List item
+    </ion-item>
+    <ion-item>
+      List item
+    </ion-item>
+    <ion-item>
+      List item
+    </ion-item>
+    <!-- ion-card -->
+    <ion-card padding>
+      <ion-card-title style="text-align: center; margin-bottom: 10px;">Natural</ion-card-title>
+      <img src="https://api.adorable.io/avatars/500"/>
+      <ion-card-subtitle><p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.Lorem ipsum, dolor sit amet consectetur adipisicing elit</p></ion-card-subtitle>
+      <ion-card-content>
+        
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+
+  
 </ion-content>
+
+<ion-footer padding>
+  <ion-toolbar color="danger">
+    <ion-title style="text-align: center;">
+      compyright&copy;2019
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

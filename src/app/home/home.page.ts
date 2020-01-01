@@ -96,7 +96,7 @@ users = {
 
   navigateBooks(){
 
-    this.navCtrl.navigateForward("/books/12345");
+    this.navCtrl.navigateForward("/products/12345");
     
   }
 

@@ -10,22 +10,18 @@ import * as firebase from 'firebase';
   styleUrls: ['./add-book.page.scss'],
 })
 export class AddBookPage implements OnInit {
-
-
-   bookTitle:string="";
-   bookDescription:string;
-   bookIbn:string;
-   bookAuthor:string;
-   bookEdition:string;
-   bookDate:string;
-   bookOwner:string;
-  
-
+ 
+   productTitle:string="";
+   productDescription:string;
+   productDate:string;
+   productOwner:string;
+   productIbn:any;
+   productEdition:any;
    bokService=new DataService();
-  book:any;
+   product:any;
 
   constructor(private navCtrl:NavController,private toastCtrl:ToastController,private loadingCtrl:LoadingController) { 
-    this.bookOwner=firebase.auth().currentUser.uid;
+    this.productOwner=firebase.auth().currentUser.uid;
   }
 
   
@@ -59,22 +55,22 @@ export class AddBookPage implements OnInit {
     this.loading();
     
     // alert('kdfjdlkfj');
-    alert(this.bookAuthor);
+    alert(this.productOwner);
 
     //store this offline
     
     
-    this.book={
-      name:this.bookTitle,
-      author:this.bookAuthor,
-      ibn:this.bookIbn,
-      description:this.bookDescription,
-      version:this.bookEdition,
-      date:new Date(this.bookDate),
+    this.product={
+      name:this.productTitle,
+      author:this.productOwner,
+      ibn:this.productIbn,
+      description:this.productDescription,
+      version:this.productEdition,
+      date:new Date(this.productDate),
       }
-      console.log(this.book);
+      console.log(this.product);
       
-      this.bokService.booksService.push(this.book);
+      this.bokService.productsService.push(this.product);
     
 
 
@@ -84,13 +80,13 @@ export class AddBookPage implements OnInit {
 
     //store this online
 
-    firebase.firestore().collection("books").add({
-      title:this.bookTitle,
-      author:this.bookAuthor,
-      ibn:this.bookIbn,
-      bookedition:this.bookEdition,
-      description:this.bookDescription,
-      date:new Date(this.bookDate),
+    firebase.firestore().collection("products").add({
+      title:this.productTitle,
+      owner:this.productOwner,
+      ibn:this.productIbn,
+      productedition:this.productEdition,
+      description:this.productDescription,
+      date:new Date(this.productDate),
       created:firebase.firestore.FieldValue.serverTimestamp()
       
     }).then((docRef)=>{

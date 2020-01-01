@@ -11,39 +11,39 @@
 <ion-content padding >
   <ion-list class="vertical-space">
     <ion-item>
-      <ion-label position="stacked">Book Title:</ion-label>
-      <ion-input type="text"  name ="bookTitle" [(ngModel)]="bookTitle"  required></ion-input>
+      <ion-label position="stacked">Product Title:</ion-label>
+      <ion-input type="text"  name ="productTitle" [(ngModel)]="productTitle"  required></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-label position="stacked">Author:</ion-label>
-        <ion-input type="text" name="bookAuthor" [(ngModel)]="bookAuthor" required></ion-input>
+        <ion-label position="stacked">Owner:</ion-label>
+        <ion-input type="text" name="productAuthor" [(ngModel)]="productOwner" required></ion-input>
       </ion-item>
 
       <ion-item>
-          <ion-label position="stacked">IBN:</ion-label>
-          <ion-input type="text" name="bookIN" [(ngModel)]="bookIbn" required></ion-input>
+          <ion-label position="stacked">Product Quantity:</ion-label>
+          <ion-input type="text" name="productIN" [(ngModel)]="productIbn" required></ion-input>
         </ion-item>
 
     
     <ion-item>
         <ion-label position="stacked">Description:</ion-label>
-        <ion-input type="text" name="bookDescription" [(ngModel)]="bookDescription" required></ion-input>
+        <ion-input type="text" name="productDescription" [(ngModel)]="productDescription" required></ion-input>
       </ion-item>
 
       <ion-item>
-          <ion-label position="stacked">Edition:</ion-label>
-          <ion-input type="text" name="bookEdition" [(ngModel)]="bookEdition" required></ion-input>
+          <ion-label position="stacked">Expiry Date:</ion-label>
+          <ion-input type="text" name="productEdition" [(ngModel)]="productEdition" required></ion-input>
         </ion-item>
      
       <ion-item>
-          <ion-label position="stacked">Date:</ion-label>
-          <ion-datetime min="1900" display-format="MM/DD/YYYY" name="bookDate" [(ngModel)]="bookDate" required></ion-datetime>
+          <ion-label position="stacked">Manifacturing Date:</ion-label>
+          <ion-datetime min="1900" display-format="MM/DD/YYYY" name="productDate" [(ngModel)]="productDate" required></ion-datetime>
         </ion-item>
         
   </ion-list>
 
-  <ion-button expand="block" shape="round" color="danger" (click)="addbook()">Add Book</ion-button>
+  <ion-button expand="block" shape="round" color="danger" (click)="addbook()">Add Product</ion-button>
 
 </ion-content>
 

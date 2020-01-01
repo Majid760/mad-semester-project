@@ -15,15 +15,15 @@ export class AppListPage implements OnInit {
 
 
   userId:string;
-  books:any[]=[];
+  productss:any[]=[];
 
-  bookss:any[]=[];
+  products:any[]=[];
   
   constructor(private navCtrl:NavController,private dataService:DataService,private loadingCtrl:LoadingController) {
     this.userId=firebase.auth().currentUser.uid;
-    this.getBooks();
+    this.getproducts();
 
-    this.bookss=this.dataService.getBooks();
+    this.products=this.dataService.getproducts();
 
     this.loading();
    }
@@ -69,10 +69,10 @@ export class AppListPage implements OnInit {
   }
 
 
-  getBooks(){
+  getproducts(){
     
-    firebase.firestore().collection("books").where("owner","==",this.userId).onSnapshot((querySnapshot)=>{
-      this.books=querySnapshot.docs;
+    firebase.firestore().collection("products").where("owner","==",this.userId).onSnapshot((querySnapshot)=>{
+      this.products=querySnapshot.docs;
     });
   }
   

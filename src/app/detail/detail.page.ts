@@ -11,12 +11,12 @@ import {LoadingController} from '@ionic/angular';
 })
 export class DetailPage implements OnInit {
 
-  book:any;
+  product:any;
   constructor(private activatedRouter:ActivatedRoute,private dataService:DataService,private loadingCtrl:LoadingController) { 
 
     let id=this.activatedRouter.snapshot.paramMap.get("id");
     console.log(id);
-    this.book=dataService.getBook(id);
+    this.product=dataService.getProduct(id);
   }
 
   ngOnInit() {

@@ -1,124 +1,117 @@
 <ion-header>
     <ion-toolbar color="danger">
-      <ion-title style="text-align: center;">
-          Best Books
-         
-      </ion-title>
-       
-      </ion-toolbar>
-      
-  </ion-header>
+        <ion-title style="text-align: center;">
+            E-SHOP
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
 
-  <!--slider-->
+<!--slider-->
 
-  <ion-searchbar></ion-searchbar>
-  <ion-toolbar>
+<ion-searchbar></ion-searchbar>
+<ion-toolbar>
     <ion-segment [(ngModel)]="page" color="danger">
-      <ion-segment-button (click)="selectedTab(0)" value="Home">
-        <ion-label> <ion-icon name="home"style="font-size:25px; margin-top:12px;"></ion-icon></ion-label>
-      </ion-segment-button>
-      <ion-segment-button (click)="selectedTab(1)" value="New">
-        <ion-label>New</ion-label>
-      </ion-segment-button>
-      <ion-segment-button (click)="selectedTab(2)" value="Top">
-        <ion-label>Top</ion-label>
-      </ion-segment-button>
-     
+        <ion-segment-button (click)="selectedTab(0)" value="">
+            <ion-label>
+                <ion-icon name="home" style="font-size:30px; margin-top:12px;"></ion-icon>
+            </ion-label>
+        </ion-segment-button>
+        <ion-segment-button (click)="selectedTab(1)" value="New">
+            <ion-label>New</ion-label>
+        </ion-segment-button>
+        <ion-segment-button (click)="selectedTab(2)" value="Top">
+            <ion-label>Top</ion-label>
+        </ion-segment-button>
     </ion-segment>
-  </ion-toolbar>
-  
-  <ion-content>
+</ion-toolbar>
+
+<ion-content>
     <ion-slides #slider>
-      <ion-slide color="danger">
-        
-            <ul style="list-style-type: none; padding:0px;">
-              <li *ngFor="let book of bookss; let i = index">
-                  <ion-card color="primary" (click)="gotoDetail(i)">
-                      <ion-card-header>
-                        
-                        <ion-card-title><h2 style="text-align: center;">{{book.name}}</h2></ion-card-title>
-                        <h3>Author:</h3>
-                        <ion-card-subtitle>{{book.author}}</ion-card-subtitle>
-                    </ion-card-header>
-                      <ion-card-content>{{book.description}}</ion-card-content>
-                  </ion-card>
+        <ion-slide>
 
-              </li>
-
-            </ul>
-             
-       
-          
-
-      </ion-slide>
-      <ion-slide>
-       
-        <ul style="list-style-type: none; padding:0px;">
-            <li *ngFor="let book of bookss; let i = index">
-              <ion-card color="success" (click)="gotoDetail(i)">
-                  <ion-card-header>
-                        
-                      <ion-card-title><h2 style="text-align: center;">{{book.name}}</h2></ion-card-title>
-                      <h3>Author:</h3>
-                      <ion-card-subtitle>{{book.author}}</ion-card-subtitle>
-                  </ion-card-header>
-                    <ion-card-content>{{book.description}}</ion-card-content>
-              </ion-card>
-
-            </li>
-
-          </ul>
-        
-      </ion-slide>
-      <ion-slide>
-        <ul style="list-style-type: none; padding:0px;">
-            <li *ngFor="let book of bookss; let i = index">
-              
-                <ion-card color="warning" (click)="gotoDetail(i)">
-                    <ion-card-header>
-                        
-                        <ion-card-title><h2 style="text-align: center;">{{book.name}}</h2></ion-card-title>
-                        <h3>Author:</h3>
-                        <ion-card-subtitle>{{book.author}}</ion-card-subtitle>
-                    </ion-card-header>
-                      <ion-card-content>{{book.description}}</ion-card-content>
+            <ul style="list-style-type: none;padding: 0%;margin: 0%;">
+                <ion-card style="width: 310px;height: 140px;">
+                    <ion-slides autoplay="100" loop="true" pager="true">
+                        <ion-slide *ngFor="let number of [1,2,3,4,5]">
+                            <img style="display: flex;" src=" ../../assets/icon/{{number}}.jpg " />
+                        </ion-slide>
+                    </ion-slides>
                 </ion-card>
-            
-            <!-- <ion-button expand="block" color="success">Success</ion-button> -->
-            </li>
+                
 
-          </ul>
-      </ion-slide>
-      
+                <li *ngFor="let product of products; let i=index ">
+                    <ion-card color="success " (click)="gotoDetail(i)">
+                        <ion-img src="../../assets/icon/3.jpg"></ion-img>
+
+                        <ion-card-header>
+                            <ion-card-title>
+                                {{product.name}}
+                            </ion-card-title>
+                        </ion-card-header>
+                        <ion-card-content>{{product.description}}</ion-card-content>
+                    </ion-card>
+                </li>
+            </ul>
+        </ion-slide>
+
+        <ion-slide>
+            <ul style="list-style-type: none; padding:0px; ">
+                <li *ngFor="let product of products; let i=index ">
+                    <ion-card color="warning " (click)="gotoDetail(i) ">
+                        <ion-img src="../../assets/icon/5.jpg"></ion-img>
+                        <ion-card-header>
+                            <ion-card-title>
+                                <h2 style="text-align: center; ">{{product.name}}</h2>
+                            </ion-card-title>
+                            <h3>Author:</h3>
+                            <ion-card-subtitle>{{product.author}}</ion-card-subtitle>
+                        </ion-card-header>
+                        <ion-card-content>{{product.description}}</ion-card-content>
+                    </ion-card>
+                    <!-- <ion-button expand="block " color="success ">Success</ion-button> -->
+                </li>
+            </ul>
+        </ion-slide>
+
+        <ion-slide>
+            <ul style="list-style-type: none; padding:0px; ">
+                <li *ngFor="let product of products; let i=index ">
+                    <ion-card color="warning " (click)="gotoDetail(i) ">
+                        <ion-img src="../../assets/icon/2.jpg"></ion-img>
+                        <ion-card-header>
+                            <ion-card-title>
+                                <h2 style="text-align: center; ">{{product.name}}</h2>
+                            </ion-card-title>
+                            <h3>Author:</h3>
+                            <ion-card-subtitle>{{product.author}}</ion-card-subtitle>
+                        </ion-card-header>
+                        <ion-card-content>{{product.description}}</ion-card-content>
+                    </ion-card>
+                    <!-- <ion-button expand="block " color="success ">Success</ion-button> -->
+                </li>
+            </ul>
+        </ion-slide>
     </ion-slides>
 
 
     <!--adding new item-->
 
-    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-        <ion-fab-button color="danger" (click)="gotoAdd()">
-          <ion-icon name="add"></ion-icon>
+    <ion-fab horizontal="end " vertical="bottom " slot="fixed ">
+        <ion-fab-button color="danger " (click)="gotoAdd() ">
+            <ion-icon name="add "></ion-icon>
         </ion-fab-button>
-     
-      </ion-fab>
 
-  </ion-content>
+    </ion-fab>
 
- 
-
- 
+</ion-content>
 
 
 
-
-  
-  
-  <!--footer-->
-  <ion-footer style="height: 40px;">
-      <ion-toolbar color="danger">
-        <ion-title style="text-align: center; font-size:12px">
-          compyright&copy; 2019.
+<!--footer-->
+<ion-footer style="height: 40px; ">
+    <ion-toolbar color="danger ">
+        <ion-title style="text-align: center; font-size:12px ">
+            compyright&copy; 2019.
         </ion-title>
-      </ion-toolbar>
-    </ion-footer>
-  
+    </ion-toolbar>
+</ion-footer>

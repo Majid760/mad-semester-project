@@ -1,4 +1,4 @@
  
 ### E-shop-SignInPage 
 
-<img src="signin.PNG" width="752">
+<img src="signup.png" width="350">

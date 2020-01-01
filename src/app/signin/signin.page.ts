@@ -42,24 +42,24 @@ export class SigninPage implements OnInit {
     loading.present();
   }
 
-  // login(){
-  //   firebase.auth().signInWithEmailAndPassword(this.email, this.password).then((userObject)=>{
-  //     console.log(userObject);
-  //     this.navCtrl.navigateForward(['/app-list']);
-  //   }).catch((err)=>{
+  login(){
+    firebase.auth().signInWithEmailAndPassword(this.email, this.password).then((userObject)=>{
+      console.log(userObject);
+      this.navCtrl.navigateForward(['/app-list']);
+    }).catch((err)=>{
 
-  //     this.toastCtrl.create({
-  //       message:err.message,
-  //       duration:2000,
-  //       color:"danger",
-  //       showCloseButton:true,
-  //       closeButtonText:"Close",
-  //       position:"bottom"
-  //     }).then((toast)=>{
-  //       toast.present();
-  //     })
-  //   });
-  // }
+      this.toastCtrl.create({
+        message:err.message,
+        duration:2000,
+        color:"danger",
+        showCloseButton:true,
+        closeButtonText:"Close",
+        position:"bottom"
+      }).then((toast)=>{
+        toast.present();
+      })
+    });
+  }
 
   gotoSingup(){
     this.navCtrl.navigateForward(['/signup']);

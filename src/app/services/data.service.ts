@@ -28,7 +28,7 @@ export class DataService {
     date:new Date(),
   },
   {
-    name:"PHP",
+    name:"Laptop",
     description:'lorem ipsume the rjekr ',
     version:'757',
     date:new Date(),

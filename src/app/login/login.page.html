@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="danger">
+      <ion-buttons slot="start">
+          <ion-back-button defaultHref="app-list"></ion-back-button>
+      </ion-buttons>
+      <ion-title class="ion-text-center">Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="loginForm">
+      <ion-grid>
+          <ion-row color="justify-content-center">
+              <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+                  <div class="ion-padding">
+                      <ion-item>
+                          <ion-icon name="person" color="danger" slot="start"></ion-icon>
+                          <ion-input name="email" formControlName="email" type="email" placeholder="your@email.com">
+                          </ion-input>
+                      </ion-item>
+                      <ion-item>
+                          <ion-icon name="lock" color="danger" slot="start"></ion-icon>
+                          <ion-input name="password" formControlName="password" type="password"
+                              placeholder="Password"></ion-input>
+                      </ion-item>
+                  </div>
+                  <div class="ion-padding">
+                      <ion-button [disabled]="loginForm.invalid" color="danger" (click)="save()" type="submit" expand="block">Login
+                          &nbsp;
+                          <ion-spinner *ngIf="loading"></ion-spinner>
+                      </ion-button>
+                  </div>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col>
+                  <ion-label *ngIf="loginError" style="color: red;" class="signup">
+                      {{ errorMsg }}
+                  </ion-label>
+                  <ion-label class="signup">
+                      Forgot Password? or
+                  </ion-label>
+                  <ion-label class="signup" routerLink="/signup" routerDirection="forword">
+                      Don't have an account? Signup
+                  </ion-label>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+  </form>
+</ion-content>
+
+<ion-footer style="height: 40px;">
+    <ion-toolbar color="danger">
+      <ion-title style="text-align: center; font-size:12px">
+        compyright&copy; 2019.
+      </ion-title>
+    </ion-toolbar>
+  </ion-footer>

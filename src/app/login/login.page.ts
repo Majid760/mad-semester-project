@@ -1,25 +1,21 @@
-import { Component, OnInit } from "@angular/core";
-import {
-  ToastController,
-  NavController,
-  LoadingController
-} from "@ionic/angular";
-import { FormBuilder, Validators } from "@angular/forms";
-
-import { AuthService } from "../sdk/core/auth.service";
-import { FormGroup } from "@angular/forms";
-import { Router } from "@angular/router";
-import { UserService } from "../sdk/custom/user.service";
-import { Events, AlertController } from "@ionic/angular";
-import * as decode from "jwt-decode";
 import { AppComponent } from '../app.component';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+
+import { AuthService } from '../sdk/core/auth.service';
+import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from '../sdk/custom/user.service';
+import { NavController, Events, AlertController } from '@ionic/angular';
+import * as decode from 'jwt-decode';
 
 @Component({
-  selector: "app-signin",
-  templateUrl: "./signin.page.html",
-  styleUrls: ["./signin.page.scss"]
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
-export class SigninPage implements OnInit {
+export class LoginPage implements OnInit {
+
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,

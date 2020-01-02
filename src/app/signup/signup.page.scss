@@ -7,3 +7,119 @@
     width: 100%;
     text-align: center;
 }
+
+
+
+// <ion-header>
+//   <ion-toolbar color="danger">
+//       <ion-buttons slot="start">
+//           <ion-back-button defaultHref="/"></ion-back-button>
+//         </ion-buttons>
+//       <ion-title style="text-align: center; "> Create an Account </ion-title>
+//   </ion-toolbar>
+// </ion-header>
+
+// <ion-content padding>
+//   <ion-list>
+//     <ion-item class="vertical-space">
+     
+//       <h1 class="center">Create New Account</h1>
+//     </ion-item>
+//     <ion-item>
+//       <ion-label position="stacked">Email</ion-label>
+//       <ion-input type="email" placeholder="xyz@abc.com" [(ngModel)]="email"></ion-input>
+//     </ion-item>
+//     <ion-item style="margin-top:20px">
+//         <ion-label position="stacked">Password<ion-back-button color="light"></ion-back-button></ion-label>
+        
+//         <ion-input type="password" [(ngModel)]="password"></ion-input>
+//     </ion-item>
+  
+    
+//   </ion-list>
+//   <ion-button expand="block" color="danger" shape="round" (click)="signup()" style="margin-top:20px">Create Account</ion-button>
+//   <ion-button fill="clear" expand="block" color="danger" shape="round" (click)="gotoSingin()" style="font-size:12px; margin-top:10px">Already have an Account? Login Here</ion-button>
+// </ion-content>
+
+
+//  <!--footer-->
+//  <ion-footer style="height: 40px;">
+//     <ion-toolbar color="danger">
+//       <ion-title style="text-align: center; font-size:12px">
+//         compyright&copy; 2019.
+//       </ion-title>
+//     </ion-toolbar>
+//   </ion-footer>
+
+// import { Component, OnInit } from '@angular/core'; 
+// import {ToastController,NavController,LoadingController} from '@ionic/angular';
+// import * as firebase from 'firebase'; 
+
+// @Component({
+//   selector: 'app-signup',
+//   templateUrl: './signup.page.html',
+//   styleUrls: ['./signup.page.scss'],
+// })
+// export class SignupPage implements OnInit {
+
+
+//   email:string;
+//   password:string;
+ 
+//   constructor(private toastCtrl:ToastController,private navCtrl:NavController,private loadingCtrl:LoadingController) { }
+
+//   ngOnInit() {
+//   }
+
+//   async loading(){
+
+//     let loading=await this.loadingCtrl.create({
+//       message:"loading...",
+//       duration:2000,
+//       showBackdrop:false,
+//       // spinner:"dots"
+//       spinner:"bubbles"
+//       // spinner:"circles"
+//       // spinner:"crescent"
+//         //  spinner:"circular"
+    
+//     })
+//     loading.present();
+//   }
+
+//   signup(){
+
+//     this.loading();
+
+    
+  
+    
+//     firebase.auth().createUserWithEmailAndPassword(this.email,this.password ).then((userData)=>{
+      
+//         //navigate the user to the app page
+//         console.log(userData);
+//            this.navCtrl.navigateForward(['/app-list']);
+
+//     }).catch((err)=>{
+//       this.toastCtrl.create({
+//         message:err.message,
+//         duration:2000,
+//         color:"danger",
+//         showCloseButton:true,
+//         closeButtonText:"Close",
+//         position:"bottom"
+//       }).then((toast)=>{
+//         toast.present();
+//       })
+
+//     })
+//   }
+
+
+//   gotoSingin(){
+
+//     this.navCtrl.navigateForward(['/signin']);
+//     // this.navCtrl.back();
+//   }
+
+// }

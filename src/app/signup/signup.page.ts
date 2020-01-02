@@ -1,72 +1,81 @@
-import { Component, OnInit } from '@angular/core'; 
-import {ToastController,NavController,LoadingController} from '@ionic/angular';
-import * as firebase from 'firebase'; 
+import { AbstractControl, FormBuilder, Validators } from "@angular/forms";
+import { Component, OnInit } from "@angular/core";
+
+import { FormGroup } from "@angular/forms";
+import { Router } from "@angular/router";
+import { Subscription } from "rxjs";
+import { UserService } from "../sdk/custom/user.service";
+import {
+  ToastController,
+  NavController,
+  LoadingController
+} from "@ionic/angular";
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.page.html',
-  styleUrls: ['./signup.page.scss'],
+  selector: "app-signup",
+  templateUrl: "./signup.page.html",
+  styleUrls: ["./signup.page.scss"]
 })
 export class SignupPage implements OnInit {
-
-
-  email:string;
-  password:string;
- 
-  constructor(private toastCtrl:ToastController,private navCtrl:NavController,private loadingCtrl:LoadingController) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private router: Router,
+    private navController: NavController
+  ) {}
+  registerForm: FormGroup;
+  loading = false;
 
   ngOnInit() {
+    this.formInitializer();
   }
 
-  async loading(){
-
-    let loading=await this.loadingCtrl.create({
-      message:"loading...",
-      duration:2000,
-      showBackdrop:false,
-      // spinner:"dots"
-      spinner:"bubbles"
-      // spinner:"circles"
-      // spinner:"crescent"
-        //  spinner:"circular"
-    
-    })
-    loading.present();
+  formInitializer() {
+    this.registerForm = this.formBuilder.group({
+      name: ["", [Validators.required]],
+      email: ["", [Validators.required, Validators.email]],
+      role: ["customer"],
+      password: ["", [Validators.required, Validators.minLength(5)]],
+      confirm_password: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(5),
+          this.matchOtherValidator("password")
+        ]
+      ]
+    });
   }
 
-  signup(){
-
-    this.loading();
-
-    
-  
-    
-    firebase.auth().createUserWithEmailAndPassword(this.email,this.password ).then((userData)=>{
-      
-        //navigate the user to the app page
-        console.log(userData);
-           this.navCtrl.navigateForward(['/app-list']);
-
-    }).catch((err)=>{
-      this.toastCtrl.create({
-        message:err.message,
-        duration:2000,
-        color:"danger",
-        showCloseButton:true,
-        closeButtonText:"Close",
-        position:"bottom"
-      }).then((toast)=>{
-        toast.present();
-      })
-
-    })
+  signup() {
+    this.loading = true;
+    this.userService.userRegister(this.registerForm.value).subscribe(
+      async data => {
+        this.loading = false;
+        this.navController.navigateBack("/login");
+      },
+      error => {
+        this.loading = false;
+      }
+    );
   }
 
+  matchOtherValidator(otherControlName: string) {
+    return (control: AbstractControl): { [key: string]: any } => {
+      const otherControl: AbstractControl = control.root.get(otherControlName);
 
-  gotoSingin(){
+      if (otherControl) {
+        const subscription: Subscription = otherControl.valueChanges.subscribe(
+          () => {
+            control.updateValueAndValidity();
+            subscription.unsubscribe();
+          }
+        );
+      }
 
-    this.navCtrl.navigateForward(['/signin']);
-    // this.navCtrl.back();
+      return otherControl && control.value !== otherControl.value
+        ? { match: true }
+        : null;
+    };
   }
-
 }

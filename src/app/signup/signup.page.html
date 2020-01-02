@@ -7,26 +7,37 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list>
-    <ion-item class="vertical-space">
-     
-      <h1 class="center">Create New Account</h1>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Email</ion-label>
-      <ion-input type="email" placeholder="xyz@abc.com" [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <ion-item style="margin-top:20px">
-        <ion-label position="stacked">Password<ion-back-button color="light"></ion-back-button></ion-label>
-        
-        <ion-input type="password" [(ngModel)]="password"></ion-input>
-    </ion-item>
-  
-    
-  </ion-list>
-  <ion-button expand="block" color="danger" shape="round" (click)="signup()" style="margin-top:20px">Create Account</ion-button>
-  <ion-button fill="clear" expand="block" color="danger" shape="round" (click)="gotoSingin()" style="font-size:12px; margin-top:10px">Already have an Account? Login Here</ion-button>
+<ion-content>
+  <form [formGroup]="registerForm">
+    <ion-grid>
+      <ion-row color="justify-content-center">
+        <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+          <div class="ion-padding">
+            <ion-item>
+              <ion-input name="name" formControlName="name" type="text" placeholder="Name"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="email" formControlName="email" type="email" placeholder="your@email.com"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="password" formControlName="password" type="password" placeholder="Password"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="password" formControlName="confirm_password" type="password" placeholder="Confirm Password">
+              </ion-input>
+            </ion-item>
+          </div>
+          <div class="ion-padding">
+            <ion-button [disabled]="registerForm.invalid" color="danger" (click)="signup()" type="submit" expand="block">
+              Signup  
+              &nbsp;
+              <ion-spinner *ngIf="loading"></ion-spinner>
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>
 
 

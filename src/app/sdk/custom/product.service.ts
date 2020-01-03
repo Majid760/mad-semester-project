@@ -10,6 +10,7 @@ import { Injectable } from '@angular/core';
 export class ProductService {
   constructor(private http: HttpClient, private authService: AuthService) { }
   selectedProduct: any;
+
   public async getAllProducts(): Promise<any> {
     const url = MyShopConfig.getPath() + '/products';
     // const token = await this.authService.getTokenFromStorage();

@@ -1,84 +1,316 @@
-// import { Component, ViewChild} from '@angular/core';
-// import { NavController,IonSlides ,LoadingController} from '@ionic/angular';
-// import {OnInit } from '@angular/core';
-// import { NullVisitor } from '@angular/compiler/src/render3/r3_ast';
-// import { DataService } from '../services/data.service';
 
-// import * as firebase from 'firebase';
+// // <ion-header>
+// // <ion-toolbar color="danger">
+// //     <ion-title style="text-align: center;">
+// //         E-SHOP
+// //     </ion-title>
+// //     <ion-label *ngIf="!login" color="" slot="end" routerDirection="'root'" routerLink="/login">
+// //         Login/Signup
+// //     </ion-label>
+// //     <ion-label *ngIf="login" color="" slot="end" (click)="logout()">
+// //         Signout
+// //     </ion-label>
+// // </ion-toolbar>
+// // </ion-header>
+
+// // <ion-searchbar></ion-searchbar>
+// // <ion-fab *ngIf="login" horizontal="end " vertical="bottom " slot="fixed ">
+// // <ion-fab-button color="danger " (click)="openAddModal()">
+// //     <ion-icon name="add"></ion-icon>
+// // </ion-fab-button>
+// // </ion-fab>
+// // <ion-toolbar>
+// // <ion-segment [(ngModel)]="page" color="danger">
+// //     <ion-segment-button (click)="selectedTab(0)" value="">
+// //         <ion-label>
+// //             <ion-icon name="home" style="font-size:30px; margin-top:12px;"></ion-icon>
+// //         </ion-label>
+// //     </ion-segment-button>
+// //     <ion-segment-button (click)="selectedTab(1)" value="New">
+// //         <ion-label>New</ion-label>
+// //     </ion-segment-button>
+// //     <ion-segment-button (click)="selectedTab(2)" value="Top">
+// //         <ion-label>Top</ion-label>
+// //     </ion-segment-button>
+// // </ion-segment>
+// // </ion-toolbar>
+
+// // <ion-content>
+// // <ion-slides #slider>
+// //     <ion-slide>
+// //         <ul style="list-style-type: none;padding: 0%;margin: 0%;">
+// //             <ion-card style="width: 310px;height: 140px;">
+// //                 <ion-slides autoplay="100" loop="true" pager="true">
+// //                     <ion-slide *ngFor="let number of [1,2,3,4,5]">
+// //                         <img style="display: flex;" src=" ../../assets/icon/{{number}}.jpg " />
+// //                     </ion-slide>
+// //                 </ion-slides>
+// //             </ion-card>
+            
+// //             <li *ngFor="let product of products" (click)="gotoDetail(product)">
+// //                 <ion-card color="success">
+// //                     <ion-img src="../../assets/icon/3.jpg"></ion-img>
+// //                     <ion-card-header>
+// //                         <ion-card-title>
+// //                             {{product.name}}
+// //                         </ion-card-title>
+// //                     </ion-card-header>
+// //                     <ion-card-content>{{product.description}}</ion-card-content>
+// //                 </ion-card>
+// //             </li>
+// //         </ul>
+// //     </ion-slide>
+
+// //     <ion-slide>
+// //         <ul style="list-style-type: none; padding:0px; ">
+// //             <li *ngFor="let product of products; let i=index ">
+// //                 <ion-card color="warning " (click)="gotoDetail(i) ">
+// //                     <ion-img src="../../assets/icon/5.jpg"></ion-img>
+// //                     <ion-card-header>
+// //                         <ion-card-title>
+// //                             <h2 style="text-align: center; ">{{product.name}}</h2>
+// //                         </ion-card-title>
+// //                         <h3>Price:</h3>
+// //                         <ion-card-subtitle>{{product.price}}</ion-card-subtitle>
+// //                     </ion-card-header>
+// //                     <ion-card-content>{{product.description}}</ion-card-content>
+// //                 </ion-card>
+// //             </li>
+// //         </ul>
+// //     </ion-slide>
+
+// //     <ion-slide>
+// //         <ul style="list-style-type: none; padding:0px; ">
+// //             <li *ngFor="let product of products; let i=index ">
+// //                 <ion-card color="warning " (click)="gotoDetail(i) ">
+// //                     <ion-img src="../../assets/icon/2.jpg"></ion-img>
+// //                     <ion-card-header>
+// //                         <ion-card-title>
+// //                             <h2 style="text-align: center; ">{{product.name}}</h2>
+// //                         </ion-card-title>
+// //                         <h3>Price:</h3>
+// //                         <ion-card-subtitle>{{product.price}}</ion-card-subtitle>
+// //                     </ion-card-header>
+// //                     <ion-card-content>{{product.description}}</ion-card-content>
+// //                 </ion-card>
+// //                 <!-- <ion-button expand="block " color="success ">Success</ion-button> -->
+// //             </li>
+// //         </ul>
+// //     </ion-slide>
+// // </ion-slides>
+// // </ion-content>
+
+
+
+// // <!--footer-->
+// // <ion-footer style="height: 40px; ">
+// // <ion-toolbar color="danger ">
+// //     <ion-title style="text-align: center; font-size:12px ">
+// //         compyright&copy; 2019.
+// //     </ion-title>
+// // </ion-toolbar>
+// // </ion-footer>
+// // // import { Component, ViewChild} from '@angular/core';
+// // // import { NavController,IonSlides ,LoadingController} from '@ionic/angular';
+// // // import {OnInit } from '@angular/core';
+// // // import { NullVisitor } from '@angular/compiler/src/render3/r3_ast';
+// // // import { DataService } from '../services/data.service';
+
+// // // import * as firebase from 'firebase';
+
+// // // @Component({
+// // //   selector: 'app-app-list',
+// // //   templateUrl: './app-list.page.html',
+// // //   styleUrls: ['./app-list.page.scss'],
+// // // })
+// // // export class AppListPage implements OnInit {
+
+
+// // //   userId:string;
+// // //   productss:any[]=[];
+
+// // //   products:any[]=[];
+  
+// // //   constructor(private navCtrl:NavController,private dataService:DataService,private loadingCtrl:LoadingController) {
+// // //     this.userId=firebase.auth().currentUser.uid;
+// // //     this.getproducts();
+
+// // //     this.products=this.dataService.getproducts();
+
+// // //     this.loading();
+// // //    }
+
+  
+
+// // //   public images:any;
+// // //   @ViewChild('slider', {static: false}) slider: IonSlides;
+// // //   page=0;
+
+// // //   selectedTab(index){
+// // //     this.slider.slideTo(index);
+// // //   }
+
+
+
+
+// // //   ngOnInit() {
+// // //   }
+
+// // //   async loading(){
+
+// // //     let loading=await this.loadingCtrl.create({
+// // //       message:"loading...",
+// // //       duration:1000,
+// // //       showBackdrop:false,
+// // //       // spinner:"dots"
+// // //       spinner:"bubbles"
+// // //       // spinner:"circles"
+// // //       // spinner:"crescent"
+// // //         //  spinner:"circular"
+    
+// // //     })
+// // //     loading.present();
+// // //   }
+
+// // //   gotoAdd(){
+    
+// // //     this.loading();
+// // //     this.navCtrl.navigateForward(['add-book']);
+// // //     // this.navCtrl.navigateRoot(['add-book']);
+
+// // //   }
+
+
+// // //   getproducts(){
+    
+// // //     firebase.firestore().collection("products").where("owner","==",this.userId).onSnapshot((querySnapshot)=>{
+// // //       this.products=querySnapshot.docs;
+// // //     });
+// // //   }
+  
+// // //   gotoDetail(index){
+// // //     this.navCtrl.navigateForward("detail/"+index);
+// // //   }
+  
+
+// // // }
+
+
+// import { Component, ViewChild, OnInit } from "@angular/core";
+// import {
+//   NavController,
+//   IonSlides,
+//   LoadingController,
+//   ModalController,
+//   AlertController,
+//   Events
+// } from "@ionic/angular";
+// import { NullVisitor } from "@angular/compiler/src/render3/r3_ast";
+// import { DataService } from "../services/data.service";
+// import { ProductService } from "../sdk/custom/product.service";
+// import { AuthService } from "../sdk/core/auth.service";
+// import { AddNewProductComponent } from "./add-new-product/add-new-product.component";
+// import { Observable } from 'rxjs';
 
 // @Component({
-//   selector: 'app-app-list',
-//   templateUrl: './app-list.page.html',
-//   styleUrls: ['./app-list.page.scss'],
+//   selector: "app-app-list",
+//   templateUrl: "./app-list.page.html",
+//   styleUrls: ["./app-list.page.scss"]
 // })
 // export class AppListPage implements OnInit {
+//   loading = false;
+//   login = false;
+//   products: Products[] = [];
+//   skeletonlist = [1, 2, 3, 4, 5];
 
+//   constructor(
+//     private navCtrl: NavController,
+//     private dataService: DataService,
+//     private loadingCtrl: LoadingController,
+//     private productService: ProductService,
+//     private modalController: ModalController,
+//     private alertController: AlertController,
+//     private authService: AuthService,
+//     public service: DataService,
+//   ) {
+    // const token = this.authService.getTokenFromStorage();
+    // if (token == null) {
+    //   this.service.login = false;
+    // } else {
+    //   this.service.login = true;
+    // }
+//   }
 
-//   userId:string;
-//   productss:any[]=[];
+//   async setLoginInfo(data, name) {
+//     this.login = true;
+//   }
 
-//   products:any[]=[];
-  
-//   constructor(private navCtrl:NavController,private dataService:DataService,private loadingCtrl:LoadingController) {
-//     this.userId=firebase.auth().currentUser.uid;
-//     this.getproducts();
+//   public images: any;
+//   @ViewChild("slider", { static: false }) slider: IonSlides;
+//   page = 0;
 
-//     this.products=this.dataService.getproducts();
-
-//     this.loading();
-//    }
-
-  
-
-//   public images:any;
-//   @ViewChild('slider', {static: false}) slider: IonSlides;
-//   page=0;
-
-//   selectedTab(index){
+//   selectedTab(index) {
 //     this.slider.slideTo(index);
 //   }
 
-
-
-
 //   ngOnInit() {
+//     this.login = this.service.login;
+//     this.getAll();
 //   }
 
-//   async loading(){
-
-//     let loading=await this.loadingCtrl.create({
-//       message:"loading...",
-//       duration:1000,
-//       showBackdrop:false,
-//       // spinner:"dots"
-//       spinner:"bubbles"
-//       // spinner:"circles"
-//       // spinner:"crescent"
-//         //  spinner:"circular"
-    
-//     })
-//     loading.present();
+//   async getAll() {
+//     this.loading = true;
+//     const observable = await this.productService.getAllProducts();
+//     observable.subscribe(
+//       data => {
+//         this.products = data.data.docs;
+//         console.log('data aa gya hy', data);
+//         this.loading = false;
+//       },
+//       err => {
+//         console.log('err aa agi hy zalim', err);
+//       }
+//     );
 //   }
 
-//   gotoAdd(){
-    
-//     this.loading();
-//     this.navCtrl.navigateForward(['add-book']);
-//     // this.navCtrl.navigateRoot(['add-book']);
-
+//   gotoAdd() {
+//     this.navCtrl.navigateForward(["add-book"]);
 //   }
 
-
-//   getproducts(){
-    
-//     firebase.firestore().collection("products").where("owner","==",this.userId).onSnapshot((querySnapshot)=>{
-//       this.products=querySnapshot.docs;
+//   openEditPopup(product: Products) {
+//     this.openAddModal(product);
+//   }
+//   async openAddModal(product?: Products) {
+//     const modal = await this.modalController.create({
+//       component: AddNewProductComponent,
+//       componentProps: { product }
 //     });
+//     modal.onDidDismiss().then(data => {
+//       console.log("dismissed", data);
+//       this.getAll();
+//     });
+//     await modal.present();
 //   }
-  
-//   gotoDetail(index){
-//     this.navCtrl.navigateForward("detail/"+index);
-//   }
-  
 
+//   getproducts() {}
+
+//   gotoDetail(index) {
+//     this.navCtrl.navigateForward("detail/" + index);
+//   }
+
+//   public async logout() {
+//     await this.authService.logout();
+//     this.login = false;
+//     this.service.login = false;
+//   }
 // }
+
+// interface Products {
+//   name: string;
+//   description: string;
+//   price: string;
+//   date: string;
+//   _id?: string;
+//   is_deleted: boolean;
+// }
+

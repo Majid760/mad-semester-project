@@ -1,8 +1,18 @@
-import { Component, ViewChild } from "@angular/core";
-import { NavController, IonSlides, LoadingController } from "@ionic/angular";
-import { OnInit } from "@angular/core";
+import { Component, ViewChild, OnInit } from "@angular/core";
+import {
+  NavController,
+  IonSlides,
+  LoadingController,
+  ModalController,
+  AlertController,
+  Events
+} from "@ionic/angular";
 import { NullVisitor } from "@angular/compiler/src/render3/r3_ast";
 import { DataService } from "../services/data.service";
+import { ProductService } from "../sdk/custom/product.service";
+import { AuthService } from "../sdk/core/auth.service";
+import { AddNewProductComponent } from "./add-new-product/add-new-product.component";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: "app-app-list",
@@ -10,19 +20,33 @@ import { DataService } from "../services/data.service";
   styleUrls: ["./app-list.page.scss"]
 })
 export class AppListPage implements OnInit {
-  userId: string;
-  productss: any[] = [];
-
-  products: any[] = [];
+  loading = false;
+  login = false;
+  products: Products[] = [];
+  skeletonlist = [1, 2, 3, 4, 5];
 
   constructor(
     private navCtrl: NavController,
     private dataService: DataService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private productService: ProductService,
+    private modalController: ModalController,
+    private alertController: AlertController,
+    private authService: AuthService,
+    public service: DataService,
   ) {
-    this.getproducts();
-    this.products = this.dataService.getproducts();
-    this.loading();
+    const token = this.authService.getTokenFromStorage();
+    if (token == null) {
+      this.service.login = false;
+    } else {
+      this.service.login = true;
+    }
+    this.getAll();
+
+  }
+
+  async setLoginInfo(data, name) {
+    this.login = true;
   }
 
   public images: any;
@@ -33,26 +57,42 @@ export class AppListPage implements OnInit {
     this.slider.slideTo(index);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.login = this.service.login;
+  }
 
-  async loading() {
-    let loading = await this.loadingCtrl.create({
-      message: "loading...",
-      duration: 1000,
-      showBackdrop: false,
-      // spinner:"dots"
-      spinner: "bubbles"
-      // spinner:"circles"
-      // spinner:"crescent"
-      //  spinner:"circular"
-    });
-    loading.present();
+  async getAll() {
+    this.loading = true;
+    const observable = await this.productService.getAllProducts();
+    observable.subscribe(
+      data => {
+        this.products = data.data.docs;
+        console.log('data aa gya hy', data);
+        this.loading = false;
+      },
+      err => {
+        console.log('err aa agi hy zalim', err);
+      }
+    );
   }
 
   gotoAdd() {
-    this.loading();
     this.navCtrl.navigateForward(["add-book"]);
-    // this.navCtrl.navigateRoot(['add-book']);
+  }
+
+  openEditPopup(product: Products) {
+    this.openAddModal(product);
+  }
+  async openAddModal(product?: Products) {
+    const modal = await this.modalController.create({
+      component: AddNewProductComponent,
+      componentProps: { product }
+    });
+    modal.onDidDismiss().then(data => {
+      console.log("dismissed", data);
+      this.getAll();
+    });
+    await modal.present();
   }
 
   getproducts() {}
@@ -60,4 +100,19 @@ export class AppListPage implements OnInit {
   gotoDetail(index) {
     this.navCtrl.navigateForward("detail/" + index);
   }
+
+  public async logout() {
+    await this.authService.logout();
+    this.login = false;
+    this.service.login = false;
+  }
+}
+
+interface Products {
+  name: string;
+  description: string;
+  price: string;
+  date: string;
+  _id?: string;
+  is_deleted: boolean;
 }

@@ -3,15 +3,21 @@
         <ion-title style="text-align: center;">
             E-SHOP
         </ion-title>
-        <ion-label color="" slot="end" routerDirection="'root'" routerLink="/login">
+        <ion-label *ngIf="!login" color="" slot="end" routerDirection="'root'" routerLink="/login">
             Login/Signup
+        </ion-label>
+        <ion-label *ngIf="login" color="" slot="end" (click)="logout()">
+            Signout
         </ion-label>
     </ion-toolbar>
 </ion-header>
 
-<!--slider-->
-
 <ion-searchbar></ion-searchbar>
+<ion-fab *ngIf="login" horizontal="end " vertical="bottom " slot="fixed ">
+    <ion-fab-button color="danger " (click)="openAddModal()">
+        <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
 <ion-toolbar>
     <ion-segment [(ngModel)]="page" color="danger">
         <ion-segment-button (click)="selectedTab(0)" value="">
@@ -31,7 +37,6 @@
 <ion-content>
     <ion-slides #slider>
         <ion-slide>
-
             <ul style="list-style-type: none;padding: 0%;margin: 0%;">
                 <ion-card style="width: 310px;height: 140px;">
                     <ion-slides autoplay="100" loop="true" pager="true">
@@ -41,11 +46,9 @@
                     </ion-slides>
                 </ion-card>
                 
-
-                <li *ngFor="let product of products; let i=index ">
-                    <ion-card color="success " (click)="gotoDetail(i)">
+                <li *ngFor="let product of products" (click)="gotoDetail(product)">
+                    <ion-card color="success">
                         <ion-img src="../../assets/icon/3.jpg"></ion-img>
-
                         <ion-card-header>
                             <ion-card-title>
                                 {{product.name}}
@@ -66,12 +69,11 @@
                             <ion-card-title>
                                 <h2 style="text-align: center; ">{{product.name}}</h2>
                             </ion-card-title>
-                            <h3>Author:</h3>
-                            <ion-card-subtitle>{{product.author}}</ion-card-subtitle>
+                            <h3>Price:</h3>
+                            <ion-card-subtitle>{{product.price}}</ion-card-subtitle>
                         </ion-card-header>
                         <ion-card-content>{{product.description}}</ion-card-content>
                     </ion-card>
-                    <!-- <ion-button expand="block " color="success ">Success</ion-button> -->
                 </li>
             </ul>
         </ion-slide>
@@ -85,8 +87,8 @@
                             <ion-card-title>
                                 <h2 style="text-align: center; ">{{product.name}}</h2>
                             </ion-card-title>
-                            <h3>Author:</h3>
-                            <ion-card-subtitle>{{product.author}}</ion-card-subtitle>
+                            <h3>Price:</h3>
+                            <ion-card-subtitle>{{product.price}}</ion-card-subtitle>
                         </ion-card-header>
                         <ion-card-content>{{product.description}}</ion-card-content>
                     </ion-card>
@@ -95,17 +97,6 @@
             </ul>
         </ion-slide>
     </ion-slides>
-
-
-    <!--adding new item-->
-
-    <ion-fab horizontal="end " vertical="bottom " slot="fixed ">
-        <ion-fab-button color="danger " (click)="gotoAdd() ">
-            <ion-icon name="add "></ion-icon>
-        </ion-fab-button>
-
-    </ion-fab>
-
 </ion-content>
 
 

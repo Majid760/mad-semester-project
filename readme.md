@@ -1,3 +1,3 @@
  
 ## Product adding Page
-<img src="adding the products.PNG" width="350">
+<img src="FullApp.PNG" width="350">

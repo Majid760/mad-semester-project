@@ -108,6 +108,9 @@ export class AppListPage implements OnInit {
   }
 }
 
+
+
+
 interface Products {
   name: string;
   description: string;
